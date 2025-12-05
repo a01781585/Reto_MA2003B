@@ -1,0 +1,77 @@
+Iniciando búsqueda de modelos ARIMAX para todos los contaminantes...
+
+🔄 Procesando: PM10
+   ✅ Ganador PM10: ARIMA(3, 1, 1) | AIC: -63.90 | MAPE: 15.607% | CME: 194.687
+
+   ▸ Se aplicará un modelo GARCH(1,1) a los residuos de ARIMAX para heterocedasticidad...
+      ✔️ GARCH(1,1) ajustado correctamente. AIC: -16.58
+
+--- PROCESO TERMINADO ---
+
+Resumen de métricas seleccionadas:
+
+Variable  Mejor_p  Mejor_d  Mejor_q        AIC        BIC  Var_Residuos     MAPE        CME      RMSE
+    PM10        3        1        1 -63.899175 -35.013799      3.025363 0.156067 194.686826 13.953022
+
+
+--- Modelo PM10 ---
+
+                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                   PM10   No. Observations:                  184
+Model:                 ARIMA(3, 1, 1)   Log Likelihood                  40.950
+Date:                Thu, 04 Dec 2025   AIC                            -63.899
+Time:                        18:57:09   BIC                            -35.014
+Sample:                    01-02-2022   HQIC                           -52.191
+                         - 07-06-2025                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+RH            -0.0082      0.001     -7.455      0.000      -0.010      -0.006
+PRS           -0.0266      0.008     -3.540      0.000      -0.041      -0.012
+y             -0.0023      0.018     -0.129      0.897      -0.037       0.033
+v              0.0158      0.009      1.823      0.068      -0.001       0.033
+ar.L1         -0.1220      0.214     -0.570      0.569      -0.541       0.297
+ar.L2         -0.1704      0.094     -1.811      0.070      -0.355       0.014
+ar.L3         -0.2888      0.094     -3.060      0.002      -0.474      -0.104
+ma.L1         -0.2794      0.231     -1.209      0.227      -0.732       0.173
+sigma2         0.0373      0.003     11.404      0.000       0.031       0.044
+===================================================================================
+Ljung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                10.68
+Prob(Q):                              0.99   Prob(JB):                         0.00
+Heteroskedasticity (H):               2.32   Skew:                            -0.17
+Prob(H) (two-sided):                  0.00   Kurtosis:                         4.13
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+
+
+--- Modelo GARCH(1,1) residuos PM10 ---
+
+                     Constant Mean - GARCH Model Results                      
+==============================================================================
+Dep. Variable:                   None   R-squared:                       0.000
+Mean Model:             Constant Mean   Adj. R-squared:                  0.000
+Vol Model:                      GARCH   Log-Likelihood:                12.2891
+Distribution:                  Normal   AIC:                          -16.5783
+Method:            Maximum Likelihood   BIC:                          -3.71852
+                                        No. Observations:                  184
+Date:                Thu, Dec 04 2025   Df Residuals:                      183
+Time:                        18:57:09   Df Model:                            1
+                               Mean Model                               
+========================================================================
+                 coef    std err          t      P>|t|  95.0% Conf. Int.
+------------------------------------------------------------------------
+mu            -0.1307  1.467e-02     -8.904  5.366e-19 [ -0.159, -0.102]
+                               Volatility Model                              
+=============================================================================
+                 coef    std err          t      P>|t|       95.0% Conf. Int.
+-----------------------------------------------------------------------------
+omega          0.0206  5.389e-03      3.814  1.368e-04  [9.991e-03,3.111e-02]
+alpha[1]   2.4231e-07  7.329e-03  3.306e-05      1.000 [-1.436e-02,1.437e-02]
+beta[1]        0.4540      0.139      3.262  1.107e-03      [  0.181,  0.727]
+=============================================================================
+
+Covariance estimator: robust
